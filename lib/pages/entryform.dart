@@ -18,17 +18,26 @@ class EntryFormState extends State<EntryForm> {
   TextEditingController nameController = TextEditingController();
   TextEditingController priceController = TextEditingController();
 
+  final GlobalKey<ScaffoldState> _scaffoldKey = new GlobalKey<ScaffoldState>();
+
+  void _showMessageInScaffold(String message) {
+    _scaffoldKey.currentState!.showSnackBar(SnackBar(
+      content: Text(message),
+    ));
+  }
+
   @override
   Widget build(BuildContext context) {
     //kondisi
-    if (item != null) {
+    if (item.name != '') {
       nameController.text = item.name;
       priceController.text = item.price.toString();
     }
 
     return Scaffold(
       appBar: AppBar(
-        title: item == null ? Text('Tambah') : Text('Ubah'),
+        title:
+            item.name == '' || item.price == 0 ? Text('Tambah') : Text('Ubah'),
         leading: const Icon(Icons.keyboard_arrow_left),
       ),
       body: ListView(
@@ -80,12 +89,12 @@ class EntryFormState extends State<EntryForm> {
                       textScaleFactor: 1.5,
                     ),
                     onPressed: () async {
-                      if (item == null) {
+                      if (item.name == '' || item.price == 0) {
                         //tambah data
                         item = Item(
                             name: nameController.text,
                             price: int.parse(priceController.text));
-                        await SQLHelper.createItem(item);
+                        _insert(item);
                       } else {
                         //ubah data
                         item.name = nameController.text;
@@ -116,5 +125,10 @@ class EntryFormState extends State<EntryForm> {
         ],
       ),
     );
+  }
+
+  void _insert(barang) async {
+    final id = await SQLHelper.createItem(item);
+    _showMessageInScaffold('inserted row id: $id');
   }
 }

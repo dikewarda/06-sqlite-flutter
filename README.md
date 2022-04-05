@@ -8,7 +8,5 @@ Prodi: D3 MI <br/>
 ## Hasil Praktikum Jobsheet 6
 ![Screenshot Hasil](img/1_hasil.jpg)
 ![Screenshot Hasil](img/2_hasil.jpg)
-![Screenshot Hasil](img/3_hasil.jpg)
-![Screenshot Hasil](img/4_hasil.jpg)
-![Screenshot Hasil](img/5_hasil.jpg)
+
 

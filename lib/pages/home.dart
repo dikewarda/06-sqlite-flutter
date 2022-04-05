@@ -6,6 +6,7 @@ import 'package:flutter_sqlite/models/item.dart';
 
 class Home extends StatefulWidget {
   const Home({Key? key}) : super(key: key);
+
   @override
   State<Home> createState() => _HomeState();
 }
@@ -13,6 +14,7 @@ class Home extends StatefulWidget {
 class _HomeState extends State<Home> {
   int count = 0;
   List<Item> itemList = [];
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(

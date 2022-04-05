@@ -5,11 +5,11 @@ import 'package:flutter_sqlite/models/item.dart';
 class SQLHelper {
   static Future<void> createTables(sql.Database database) async {
     await database.execute('''
-    CREATE TABLE items (
-    id INTEGER PRIMARY KEY AUTOINCREMENT,
-    name TEXT,
-    price INTEGER
-    )
+      CREATE TABLE items (
+        id INTEGER PRIMARY KEY AUTOINCREMENT,
+        name TEXT,
+        price INTEGER
+      )
     ''');
   }
 
